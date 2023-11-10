@@ -1,0 +1,275 @@
+
+
+
+
+GIT ADVANCE CLASSES 
+-----------------------------------------
+TOPICS ---
+1 GIT PULL
+2 GIT FETCH
+3 GIT MERGE 
+4 GIT REBASE 
+5 GIT CLONE
+6 GIT STASH
+7 GIT SQUASH
+8 GIT RESET(HARD-RESET & SOFT RESET)
+9 GIT REVERT
+10 GIT BRACHING STARTEGY
+11 GIT PR PROCESS
+---------------------------------------------
+CHANGE THE USER  NAME INTO GITHUB USER NAME 
+
+COMMAND-- git config --global user.name "parthiraji"
+          git config --global user.email "parthiraji483@gmail.com"
+
+-----------------------------------------
+UNSTAGE THE STAGED FILE BEFORE GOING TO COMMIT LOCAL REPOS 
+
+COMMAND -- git rm --cached <file name>
+command -- git restore --staged <file>
+
+-----------------------------------------
+RESTORE THE PREVIOUS ONE NOT TO CHANGE NEW ONE IN THE FILE 
+
+ex - IF you added some lines in the file but after that you dont want to add in the stageing area
+     restore that previous one only .
+
+command -- git restore <file name>
+
+------------------------------------------
+GIT RESET -- HARD RESET & SOFT RESET 
+
+HARD RESET :
+
+In order to undo the last commit and discard all changes in the working directory and index,
+execute the  git reset  command with the   hard  option and specify the commit before HEAD 
+
+COMAND - git reset --hard <last commit id>
+
+SOFT RESET :
+ which will keep your files, and stage all changes back automatically.
+
+NOTE : BY  DEFAULTLY IT WILL TAKE SOFT RESET FIRST BEACUSE IT RECOMENDED ONE , FOR DOING RESET 
+
+COMAND - git reset --soft <commit id>
+
+
+-----------------------------------------------------
+GIT REVERT 
+
+The git revert command is a forward-moving undo operation that offers a safe method of undoing changes.
+Instead of deleting or orphaning commits in the commit history, a revert will create a new commit that inverses the changes specified. 
+Git revert is a safer alternative to git reset in regards to losing work.
+
+NOTE : GIT REVERT Delete only the particular commit that you mentioned .
+
+COMMAND -- git revert <commit id>
+
+NOTES :now it will open in nano editer option we need to justify that why we need delete give some random lines 
+       command-- ctrl+ o  for save  
+       command-- ctrl+ x  for exit 
+
+To Avoid this nano editor option :
+     
+    command -- git revert <commit id> --no-commit
+
+it will directly remove that commit without giving the revert comit id .
+
+--------------------------------------------------------
+GIT CLONE and GIT PULL
+
+git clone is primarily used to point to an existing repo and make a clone or copy of that repo at in a new directory, at another location. 
+The original repository can be located on the local filesystem or on remote machine accessible supported protocols. 
+The git clone command copies an existing Git repository.
+
+command -- git clone < url of that remote repo>
+
+command --- ll comand to list out the remote repo folder
+
+WHEN  you  go to the that remote repo we use -- cd comand . then neenga local repo la panna ellam activitiesum panalam.
+
+after you finish some task in that remote then you need push that code to the remote repo 
+
+command -- git push origin master
+-------------------------------------------------------
+GIT PULL 
+
+The git pull command is used to fetch and download content from a remote repository and immediately update the local repository to match that content.
+Merging remote upstream changes into your local repository is a common task in Git-based collaboration work flows.
+
+command -- git pull -r
+
+GIT PR PROCESS
+
+pull request let you inform other team members about the changes .that your pushed to github .
+once a pull request is sent , your team members can review the set of changes, discuss potential modification,
+and merge the pull request if everything looks fine .
+
+----------------------------------------------------------
+GIT PUSH 
+ 
+The git push command is used to upload local repository content to a remote repository. 
+Pushing is how you transfer commits from your local repository to a remote repo. 
+It's the counterpart to git fetch , but whereas fetching imports commits to local branches, pushing exports commits to remote branches. 
+
+TO PUSH A CODE TO THE REMOTE REPO FROM LOCAL REPO 
+
+STEP 1 - create your own remote repo in the github 
+
+STEP 2 - from the local repos make sure that you must in master branch.
+ 
+ comand - git remote add origin <new remote repo url>
+ comand - git push -u origin main
+----------------------------------------------------------
+SOME ADVANCED CASE HOW TO PULL AND PUSH THE CODE TO DIFFRENT REMOTE REPOS 
+
+NOTE : MOSTLY THEY WILL FETCH AND PULL USING SAME REMOTE REPOS BUT SOME TIME THEY WILL CHANGE THE 
+PULL AND PUSH OPTION TO DIFFRENT REMOTE REPOS 
+
+TO FIND OUT REMOTE REPOS DETAILS
+
+GO TO THE ONE REMOTE REPO USING -- CD COMAND <DIR NAME> 
+
+COMMAND -- git remote -v
+
+it will shows two url mostly it will same ,because we will work on single remote repos only .
+
+TO CHANGE THE URL FOR FETCH AND PUSH FOR THE REMOTE REPOS
+
+COMMAND - git remote set-url origin < another repo url >
+
+OR EITHER YOU WANT TO CHANGE FETCH OR PULL 
+
+COMAND -  git remote set-url --push origin <another repo url>
+
+------------------------------------------------------------
+HOW TO DELETE A BRANCH
+
+COMAND -- git branch -d <branch name> 
+
+------------------------------------------------------------
+GIT REBASE
+
+REBASE  is the process of moving or combining a sequence of commits to a new base commit.
+Rebasing is often used as an alternative to merging.Rebasing a branch updates one branch with another by applying the commits
+of one branch updates one branch with another by applying the commits of one branch on top of the commits of another branch.
+
+command -- git rebase <feauture branch> <master>
+
+------------------------------------------------------------
+GIT CHEERY PICK 
+
+CHERRY PICK is the act of picking a commit from a branch and applying it to another .
+git cherry-pick can be useful for undoiong changes .for ex say a commit is accidently made to the wrong branch .you can switch to the correct branch and cherry-pick
+the commit to where it should belong 
+
+command -- git checkout master 
+command -- git cherry-pick <commit id>
+
+------------------------------------------------------------
+GIT STASH 
+
+this command saves your local modification away and revert the working directory to match the HEAD commit.
+
+shorta sollappona neenga  working directory la create pani vachuruka filesa ex-- file1 file2 nu eruku 
+but atha staging pani vachurikinga but inum commit panala , athukulla vera oru files  modify pana solranga
+apa itha commit panama ungalala atha pana mudiyathu 
+
+so that , athukaga than git stash use panuvanga apa neenga create pana file1 and file2 oru temp storage git store panidum
+aprm oru puthu file a neenga modify panitu comit panitinga .
+
+ipa nnenga temp storagela pana file1 and file2 thirumba revert pana -- git stash pop <stash num>
+
+list of stashes paka --- git stash list 
+
+   commands ---- git stash
+                 git stash pop <stash num>
+                 git stash list 
+
+** note if you want push a particular file to stash you use ( git stash push <file name> )**
+
+------------------------------------------------------------------------
+GIT SQUASH 
+
+To "squash" in Git means to combine multiple commits into one. You can do this at any point in time (by using Git's "Interactive Rebase" feature), 
+though it is most often done when merging branches. Please note that there is no such thing as a stand-alone git squash command.
+
+NOTE ( intha squash pandrathuku munnadi nalla think panitu panunga beacause if you done a squash then you cant do git revert and git cherry pick 
+       panalam but fulla than cherry pick agum  particullar commit matum cherry pick nadakathu  )
+
+COMMAND --- git rebase -i HEAD~comit num
+
+this commad is for few commits id you can count the commits and asssign the value in the blank .
+
+or else if you have more numbers of commits . you can give 
+
+comand --- git rebase -i <commit id>
+
+NOTE ( editor open athula ethalam squash pananum nenaikiringalo athalam "(squash)" nu name kudunga then 
+       last la erukuratha matum pick nu apdiye vachudunga squash nu mathathinga ).
+
+then give ctrl+ O
+          ctrl+ x
+------------------------------------------------------------------------
+HOW TO AUTHENTICATE GITHUB USING SSH KEY 
+
+STEP 1 - FIRST GO TO YOUR GITHUB ACC --- SETTINGS ---SSH AND GPG-- you will add ssh key option 
+
+STEP 2 - then go to git official documet page -- select the linux -- you will key gen command
+
+STEP 3 - it will redirect to this page https://docs.github.com/en/authentication/connecting-to-github-with-ssh
+
+STEP 4 - copy this command- ssh-keygen -t ed25519 -C "your_githud mail id"
+
+STEP 5 - it generate a new key in hidden file path -- .ssh with some name 
+
+STEP 6 - go to that file path and will get the publickey (.rsa pub)over there -- then come to github acc --settings --ssh key-- add that key 
+
+STEP 7 - then select any repo and change the option to ssh url type ---copy that url 
+
+STEP 8 - then come to remote machine and enter into any directory and give 
+    command-- git clone <ssh url>
+
+then it will not ask any user name and password 
+
+----------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

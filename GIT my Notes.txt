@@ -1,0 +1,315 @@
+DAY ONE ACTIVITY  
+
+Today we are going see about what is GIT ?
+
+   GIT- it is a respository which our developer store the source code in that reposetory .
+        it is version  control system , it means tracking of our code .
+
+let see some practical 
+
+step 1 : create a ec2 instance 
+
+step 2 : install git 
+ comand -- yum install git -y
+
+step 3 : create directory and go to that directory 
+ comand - mkdir day1
+          cd day1
+
+NOTE ( before going to work on git comand you must creat the local reposetory first ,
+       only after that our git comands will b work )
+
+step 4 : check the hidden files first 
+ command-  ls -a 
+
+step 5 : And the execute this comand to intialies the git local repos 
+ command- git init
+
+step 6 : you created a local repos in the name of ( .git )
+ (dot) - represent the hidden files .
+
+step 7 : then go that hidden file to see how it is be 
+ comand - cd .git/
+
+note - ***dont do anything in that files **** 
+
+    show the work flow path for Git  -- now we are in working directory
+
+step 8 : create a file using vi editor in the name of (vi test) go to that file and enter some words
+
+it means entering some codes in that file.
+
+step 9 : now we created some file and we need to move that files into (staging area)  from (working directory) 
+
+staging area -- it is a temprory storage area before going to put code into local repos .
+
+step 10 : before going to push the code to staging area execute this command
+ comand -- git status -s 
+( which its shows the satus of our file , at first it shows the (??) symbole first
+it means it untracked file ).
+
+step 11 : now push the msg to stageing area 
+ comand -- git add (file name)
+
+now again execute that git satus comand now it will shows some file is tracked 
+
+step 12 : now we are going to move that file from staging to local repos 
+ coamnd - git commit -m "first comit"  
+
+step 13 : execute command- git log 
+ ( now its shows the user-root and comit id ) 
+ 
+we can also view that file using command- git show <comit id>
+
+step 14 : again edit that same (test) file and execute ( git status -a )
+
+(now it  will shows some red leter mark which means modified )
+
+step 15 : now again execute same comand-- git add test 
+
+step 16 : again execute comand - git commit -m "second commit"
+
+step 17 : now we are going create user name and password 
+
+explain about Git Hub -- it is remote reposetory 
+
+step 18 : execute git config --global user.name "parthiraji"
+                  git config --global user.email "parthiraji483@gmail.com"
+
+step 19 : And again edit ( test file ) and now you see that user name and mail over there
+
+step 20 : now we need to push this coding to github account 
+
+(on left side in the git hub acc you see new(icon) -- create new remote repos name -- set to public)
+
+step 21 : before going to push the code github execute this comand -- git remote add <alias name><git hub remote repo url>
+
+step 22 : And then execute command-- git push <alias name> master 
+ now it will ask git hub acc user name and password 
+
+step 23 : now it will show some error asking some personal tokens 
+
+go to git hub --- settings -- develper setting -- personal token--genarate a new token .
+
+copy that token and save it .
+
+step 24 : again execute -- git push <alias> master , and copy paste the token id 
+
+now it will excute .
+
+step 25 : now go and see the github you repos inthat github
+
+----------------------------------------------------------------------------------------------------------------------------------
+SECOND DAY ACTIVITY 
+
+step 1 : create a another directory -- day2merge
+
+today we talk about master and branches 
+
+step 2 : again create a local repo using -- git init
+
+step 3 : create a file using vi test --- add some lines --and check -- git status -s --add the test file to stage area -- git add test --and give git status -a .  
+
+step 4 : now commit the test file to local repo -- git commit -m "first commit"  and check the log -- git log
+
+step 5 : and again add some lines test file and execute this command--- git status -s .
+
+step 6 : git commit -a -m "second commit" it is a short cut .
+
+show the git master branch in excel sheet , at present the HEAD is placed in second comit right now.
+ 
+step 7 : use the comand -- git branch  ,at presnt it shows the master branch because we are right now working the master branch.
+
+step 8 : create a new branch using comand -- git branch <any name>
+ 
+( at present we created a new branch name called DEV from second comit of the master )
+
+now we are going to jump from master branch to DEV branch
+
+step 9 : to switch from one branch to another branch --- git checkout dev
+
+step 10 : and give some changes in vi test file -- and give git commit -am "third commit"
+
+now it will shows third commit is added in DEV branch .and HEAD also right in DEV branch
+
+step 11 : now again change the branch using git checkout <master> , now view the vi test file it will show 2lines only
+
+note ( now this is called as file virtualization , git nama entha branch la erukuroma athuku yeethamari filesa vary pani katum)
+
+step 12 : now we goiing see SMOOTH MERGE (which mean there is no problem has been created while merging with the master branch)
+
+step 13 : BEFORE going to merge you need to check first which branch and log 
+
+step 14 : go to master branch and check the log and --- execute --- git merge dev .
+
+now the FIRST segment is over --------------
+
+NOW we are going to see about MERGE CONFLICT 
+
+step 15 : again create one directory called mkdir day2_mergeconflict
+
+step 16 : again create one file -- vi test 
+
+note ( if you of n number of file use this comand ---- ( git add .)
+
+now ipa scenario assumption panikonga ena na , master branch thaniya oru branch create pani athula work pandringa
+athe mari enoru devleoper same athaye pandraru but rendu perum ore filea than edit panitu erukinga ipa avar sikram mudichitu 
+commit panitu poiduraru .
+
+again nenga ena pandringa ungaloda dev branchla erunthu git log check panama -- git merge kudkuringa .
+
+ipa than  neenga merge conflict ta face panuvinga.
+
+HERE we using the tool called as MERGE TOOL  which is default in git.
+
+before going to working on merge tool we need to configure some comand for merge tool.
+
+step 17 : execute this command -- git config merge.tool vimdiff
+
+step 18 : and execute this command-- git config merge.conflictstyle diff3
+
+step 19 : sometime when you open merge tool it will ask yes or no option to avoid -- git config mergetool.prompt false
+
+step 20 : And then execute --- git mergetool
+
+step 21 : then you see the vim editor option over 
+
+and then execute this execute this command ---- press (esc) for comand mode and give -- :diffg RE
+
+step 22 : once you finished give ( :wqa ) for save and leave out every thing .
+
+step 23 : now all is set , here we see that we are using merge tool option for find the problem,
+
+now automatically git will add the file into staging area .
+
+just give --- git commit -m "fixed all error"
+
+--------------------------------------------------------------
+THIRD DAY ACTIVITY
+
+today we going see about -- re base and cherry pick
+
+step 1 : create a new directory and initiate new local repo also 
+
+step 2 : last classes ena panamo athethan pannuga , create a file add some lines, add to staging area and local repo .
+
+step 3 : AND CREATE a new branch (dev) .
+
+step 4 : In dev branch add another file also called -- (vi new) add some lines also 
+
+note [ git file virtulisation matum panala  folder virtualisation also panum ]
+
+and explain about rebase topic with image concept and do some practical.
+
+step 5 : rebase pandrathuku munadi nama (dev) branchku maranum .
+
+step 6 : And execute -- git rebase master
+
+now you smoothly changed the rebase option now
+
+step 7 : after that execute this comand from master --- (git merge dev)
+
+=======
+EXPLAIN ABOUT  FORKING , GITHUB TO GITHUB CHANGING REPOSTRY.
+======
+
+step 8 : again asusal do the same--- now go to that cloned repos using --- git clone (url of repo)
+
+step 9 : go the cloned repos using cd comand and create a new branch (dev ) and go to dev branch --- create a file and enter some lines 
+
+step10 : and comit the file -- git commit -am "final commit"
+
+step 11 : now pusg this comit to remote repos -- git push origin dev
+ 
+now it will ask usr name and password 
+
+--------------------------
+CHERRY PICK 
+
+step 1 : again create a new directory===and initate git --- git init
+
+step 2 : create a file and some lines first line --- comit the first line -- git commit master
+
+step3 : create ddev branch  and some more lines in that test file 
+
+step 4 : ipa dev branch la rendu commit eruku -- merge oprestion pana elame merge agidum
+
+athanala --- we are using this cherry operation 
+
+step 5 : come to master branch and --- enter --- git cherry-pick (comit id)
+
+------------------------------------
+
+
+
+
+
+
+
+
+
+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
+
+
+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
+
+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
+
+
+
+
+
+
+
+
+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
+
+
+
+
+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
+
+
+
+
+* must be in master 
+
+git merge dev
+
+
+
+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
+
+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
+
+
+
+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
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
